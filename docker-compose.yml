@@ -31,14 +31,14 @@ services:
                         dockerfile: Dockerfile.dev
                         context: ./client
                 volumes:
-                        - ./app/node_modules
+                        - /app/node_modules 
                         - ./client:/app
         worker:
                 build:
                         dockerfile: Dockerfile.dev
-                        context: ./client
+                        context: ./worker
                 volumes:
-                        - ./app/node_modules
+                        - /app/node_modules
                         - ./worker:/app
         
         
