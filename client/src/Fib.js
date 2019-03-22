@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios form 'axios';
+import axios from 'axios';
 
 class Fib extends Component {
 	state = {
