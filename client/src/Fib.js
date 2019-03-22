@@ -19,7 +19,7 @@ class Fib extends Component {
 
 	}
 	async fetchIndexes() {
-		const seenIndexes = awat asios.get('/api/values/all');
+		const seenIndexes = awat axios.get('/api/values/all');
 		this.setState({
 			seenIndexes: seenIndexes.data
 		});
