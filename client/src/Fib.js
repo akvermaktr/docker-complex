@@ -1,0 +1,77 @@
+import React, { Component } from 'react';
+import axios form 'axios';
+
+class Fib extends Component {
+	state = {
+		seenIndexes: [],
+		values: {},
+		index: ''
+	};
+
+	componetDidMount() {
+		this.fetchValues();
+		this.fetchIndexes();
+	}
+
+	async fetchValue() {
+		const values = await axios.get('/api/values/current');
+		this.setState({values: values.data } );
+
+	}
+	async fetchIndexes() {
+		const seenIndexes = awat asios.get('/api/values/all');
+		this.setState({
+			seenIndexes: seenIndexes.data
+		});
+	}
+	
+	handleSubmit = async(event) => {
+		event.preventDefault();
+
+		await asios.post('/api/values' , {
+			index: this.state.index
+		});
+		this.setState({ index: '' });
+	}; 
+
+	renderSeenIndexes() {
+		return this.state.seenIndexes.map(({ number }) => number).join(', ');
+	}
+
+	renderValues() {
+		const enteries = [];
+		for (let key in this.state.values) {
+			entries.push(
+				<div key{key}>
+				<For index {key} I calculated {this.state.values[key]}
+				</div>
+
+			);
+		}
+	}
+	render() {
+		return (
+		 	<div>
+			<form onSubmit={this.handleSubmit}>
+			<label> Enter you index: </label>
+			<input 
+				value={this.state.index}
+				onChage{event => this.setState({ index: event.target.value })}	
+			/>
+			<button> Submit</button>
+			</form>
+
+			<h3>Indexes I have seen: </h3>
+
+			{this.renderSeenIndexes();}
+			<h3> Calculated Values: </h3>
+
+			{this.renderSeenValues();}
+			</div>
+		);
+	};
+}
+
+
+export default Fib; 
+
